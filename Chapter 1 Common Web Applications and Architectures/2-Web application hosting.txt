@@ -1,0 +1,79 @@
+Web application hosting
+
+The location of the application or its modules has a direct bearing on our role as penetration testers.
+
+Target applications may be anywhere on a continuum, from physical to virtual, to cloud-hosted components, or some combination of the three.
+
+Recently, a fourth possibility has arrived:
+    containers.
+    The continuum of hosting options and their relative scale and security attributes are shown in the following figure.
+
+Bear in mind that the dates shown here relate to the rise in popularity of each possibility, but that any of the hosting possibilities may coexist, and that containers, in fact, can be hosted just as well in either cloud or on-premise data centers.
+
+This evolution is seen in the following figure:
+
+    Hosting options have evolved to better enable flexible and dynamic deployment - most customers deploy in multiple places.
+
+
+Physical hosting
+
+    For many years, application architectures and design choices only had to consider the physical, barebones host for running various components of the architecture.
+
+    As web applications scaled and incorporated specialized platforms, additional hosts were added to meet the need.
+
+    New database servers were added as the data sets became more diverse, additional application servers would be needed to incorporate additional software platforms, and so on.
+
+    Labor and hardware resources are dedicated to each additional instance, but they add cost, complexity, and waste to a data center.
+    The workloads depended on dedicated resources, and this made them both vulnerable and inflexible.
+
+Virtual hosting:
+    Virtualization has drastically changed this paradigm.
+    By allowing hardware resources to be pooled and allocated logically to multiple guest systems, a single pool of hardware
+    resources could contain all of the disparate operating systems, applications, database types,
+
+    and other application necessities on a homogenous pool of servers, which provided centralized management and dynamically allocated interfaces and devices to multiple organizations in a prioritized manner.
+    Web applications, in particular, benefited from this, as the flexibility of virtualization has offered a means to create parallel application environments,
+        clones of databases, and so on, for the purposes of testing, quality assurance, and the creation of surge capacity.
+    Because system administrators could now manage multiple workloads on the same pool of resources, hardware and support costs
+    (for example power, floor space, installation and provisioning)
+    could also be reduced, assuming the licensing costs don't neutralize the inherent efficiencies.
+        Many applications still run in virtual on-premise environments.
+
+        Note
+            It's worth noting that virtualization has also introduced a new tension between application, system administration, and network teams with the shift in responsibilities for security-related aspects.
+            As such, duties may not be clearly understood, properly fulfilled, or even accounted for. Sounds like a great pen testing opportunity!
+
+Cloud hosting
+
+    Amazon took the concept of hosting virtual workloads a step further in 2006 and introduced cloud computing, with Microsoft Azure and others following shortly thereafter.
+
+    The promise of turn-key Software as a Service (SaaS) running in highly survivable infrastructures via the internet allowed
+    companies to build out applications without investing in hardware, bandwidth, or even real estate.
+    Cloud computing was supposed to replace private cloud (traditional on premise systems), and some organizations have indeed (en efecto) made this happen.
+    The predominant trend, however, is for most enterprises to see a split in applications between private and public cloud, based on the types and steady-state demand for these services.
+
+Containers – a new trend
+
+    Containers offer a parallel or alternate packaging; rather than(mas bien que) including the entire operating system and
+    emulated hardware common in virtual machines, containers only bring their unique attributes and share these common ancillaries and functions,
+    making them smaller and more agile.
+
+    These traits (estos rasgos) have allowed large companies such as Google and Facebook to scale in real time to surge needs of their users with microsecond response times and complete the automation of both the spawning(desovar) and the destruction of container workloads.
+
+
+    So, what does all of this mean to us?
+    The location and packaging of a web application impacts its security posture.
+
+    Both private and public cloud-hosted applications will normally integrate with other applications that may span in both domains.
+
+    These integration points offer potential threat vectors that must be tested, or they can certainly fall victim to attack.
+
+    Cloud-hosted applications may also benefit from protection hosted or offered by the service provider, but they may also limit the variety of defensive options and web platforms that can be supported.
+
+    Understanding these constraints can help us focus on our probing and eliminating unnecessary work.
+
+    The hosting paradigm also determines the composition of the team of defenders and operators that we are encountering.
+
+    Cloud hosting companies may have more capable security operations centers, but a division of application security responsibility could result in a fragmentation of the
+    intelligence and provide a gap that can be used to exploit the target.
+    The underlying virtualization and operating systems available will also influence the choice of the application's platform, surrounding security mechanisms, and so on.

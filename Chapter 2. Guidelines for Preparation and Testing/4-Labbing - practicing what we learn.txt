@@ -1,0 +1,47 @@
+Labbing - practicing what we learn
+        Labbing - practicando lo que aprendemos
+
+
+We also want to push the limits without impacting the performance of some real production applications or their underlying systems or supporting networks.
+
+As variety is the spice of life, it also holds true in penetration testing.
+
+Your efficacy in testing will be greatly improved with some exposure and knowledge of a variety of platforms.
+
+There are some great resources such as Packt's own Building Virtual Pentesting Labs for Advanced Penetration Testing - Second Edition by Kevin Cardwell (https://www.packtpub.com/networking-and-servers/building-virtual-pentesting-labs-advanced-penetration-testing-second-edition),
+
+if you would like to dive into a more rigorous all-purpose pen testing range.
+In this section, we'll briefly discuss the sandbox or laboratory that we'll be using in this book to rehearse our pen testing approaches.
+
+
+Creating a virtualized environment
+
+    White hats, just like any IT professionals, often have zealous allegiance to a specific platform and operating system. I fully expect that readers of this book will be using a laptop running some flavor of Microsoft Windows, Mac OS (X or Sierra), or Linux/BSD (Ubuntu/Debian, Fedora/RedHat, SUSE, FreeBSD, and so on). Don't sweat the small stuff - so long as it is a fairly new and well-provisioned laptop or desktop (4 CPU modern cores, Ethernet and wireless, some USB (version 2 or 3) sockets, and 16 GB RAM minimum), it should at least get you started.
+
+    It should be noted that you can certainly use dedicated servers or barebones (physical) hosts and network equipment to build a lab, but we'll be able to do everything in this book using our virtual sandbox. In actual practice, it is more common to see professional pen testers use virtual machines to perform their testing, as it helps assure customers that proper sanitization and isolation are occurring. The tester can merely host the VM on a removable or networked drive and delete the VM when the project is complete
+
+
+Our penetration testing host
+
+    We'll be using the latest (2016.2 at the time of writing this book) version of Kali Linux, using the readymade VMs from their repository (https://www.offensive-security.com/kali-linux-vmware-virtualbox-image-download/). I would encourage modifying the image to have a larger partition (I used a 1 TB hybrid USB 3.0 drive to store all images, and set the Kali image to a single partition of 100GB). This larger footprint will accommodate the extensive archives of websites and data collection. You can also enable additional virtual network interfaces cards (NICs) if you so desire, but I mapped the single NIC to the appropriate interface for each form of connectivity required using VMWare Fusion's machine settings. For MITM attacks, we'll provision a second NIC.
+
+
+Creating a target-rich environment
+
+    A majority of the server targets that we'll encounter will be hosted on the Linux or Windows operating systems, and the clients will be Linux, Windows, Mac OS, or mobile (Android, iOS, Windows Phone, or Blackberry). Let's take the server and client sides separately.
+
+    Finding gullible servers (Encontrar servidores crédulos):
+
+        If you have an active Microsoft Developers Program (MSDP) license, you can use these images to test; but for the rest of us without the budget to support this, you can download full versions of almost any operating system or software package from Microsoft for an evaluation term of 60 to 180 days at their evaluation center website (https://www.microsoft.com/en-us/evalcenter/). Both options are suitable, but the frequent need to start fresh and the non-existent cost of the evaluation licenses make the latter a perfectly suitable option. I would recommend having access to images for MS Server 2008, 2012, and 2016 at a minimum, with images configured for IIS and other important web services.
+
+        Linux clients are easier. You can locate options for pretty much any variant you need; and for enterprise/commercial variants, you can find a free and community-supported approximation that is extremely close. Most Linux implementations for web services include not only the Linux OS but also the appropriate Apache web server, MySQL database, and PHP versions, which together form the LAMP web stack. Having a current image of a Debian, Ubuntu, CentOS (for Red Hat targets), Fedora, or SuSE Linux can ensure you are ready for any potential scenarios.
+
+    Damn Vulnerable Web Application (DVWA, http://www.dvwa.co.uk), the OWASP Broken Web App (https://sourceforge.net/projects/owaspbwa/files/) and the
+    Beebox VM (a VM-based version of the Buggy Web Application or bwAPP module, available at http://www.itsecgames.com). Additional VMs for practice can be found at VulnHub (https://www.vulnhub.com/).
+
+
+Unwitting clients:
+
+If you are averse to disclosing your information and creating an account just to download a suitable MS desktop OS, you can also download OS and browser combination images that Microsoft encourages for the use of testers and developers (https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/). You'll want a selection of Windows 7, 8, and 10 hosts to play with for the sake of completeness; at various points in the book, it will make sense to try each of the multitude of browsers available (Internet Explorer/Edge, Firefox, Chrome, and so on). While the MSDN, Eval Center, and developer downloads will all work, for ease of setting up new environments, the latter approach sufficed for most of my preparatory work.
+
+Mobile device operating systems can be run virtually with varying success, with iOS being the lone holdout (good luck getting iOS running virtually!) Most of our techniques will exploit the browsers alone, so using a browser plugin or developer tool configuration can do the trick. A quick search from Firefox or Chrome for user agent browser changer will yield tools that allow a desktop browser to emulate any number of other browsers, both mobile and desktop based. I used the Kali VM's Firefox or Iceweasel browser whenever possible, falling back on Chrome on the same VM or IE/Edge, Safari, or others on the appropriate Windows VM, or my laptop's browser as needed.

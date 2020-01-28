@@ -1,0 +1,17 @@
+Summary
+
+In this chapter, we discussed some architectural concepts that may help us gain better insight into our targets.
+
+We also discussed the various security measures our customers can put into place that we will need to be aware of, both to plan our attacks and to test for efficacy.
+
+Our discussion also covered the importance of testing throughout the lifecycle of the application.
+
+Doing this saves both time and money, and can certainly save the reputation and minimize risk once the application is in production.
+
+These considerations should merit having penetration testers as a vital and permanent member of any development team.
+
+In our next chapter, we will talk briefly about how to prepare a fully featured sandbox environment that can help us practice the test concepts.
+We'll also discuss the leading test frameworks that can help us provide comprehensive test coverage.
+
+Lastly(por ultimo), we'll discuss contracts and the ethical and legal aspects of our job;
+    staying out of jail is a key objective.

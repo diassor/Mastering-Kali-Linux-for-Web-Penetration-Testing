@@ -1,0 +1,156 @@
+Chapter 1. Common Web Applications and Architectures
+
+In this first chapter, we'll take a look at the following:
+
+    Leading web application architectures and trends
+    Common web application platforms
+    Cloud and privately hosted solutions
+    Common defenses
+    A high-level view of architectural soft-spots which we will evaluate as we progress through this book
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Common architectures
+
+We should also understand that the clients' role in this architecture can vary greatly. This evolution has improved scale
+and availability, but the additional complexity and variability involved can work against less diligent developers and operators.
+
+The overall web application's architecture maybe physically, logically, or functionally segmented. These types of segmentation
+may occur in combinations; with the cross-application integration so prevalent in enterprises, it is likely that these boundaries or
+characteristics are always in a state of transition.
+
+This segmentation serves to improve scalability and modularity, split management domains to match the personnel or team structure,
+increase availability, and can also offer some much-needed segmentation to assist in the event of a compromise.
+
+The degree to which this modularity occurs and how the functions are divided logically and physically is greatly dependent on the framework that is used.
+
+Standalone models (modelos independientes)
+
+    Most small or ad hoc web applications at some point or another were hosted on a physical or virtual server and within a
+    single monolithic installation, and this is commonly encountered in simpler self-hosted applications such as a
+    small or medium business web page, inventory service, ticketing systems, and so on. As these applications or their
+    associated databases grow, it becomes necessary to separate the components or modules to better support the scale and integrate with adjacent applications and data stores.
+
+    These applications tend to use commonly available turnkey web frameworks such as Drupal, WordPress, Joomla!, Django, or a
+    multitude of other frameworks,
+    each of which includes a content delivery manager and language platform
+        (for example Java, PHP: Hypertext Pre-Processor (PHP), Active Server Pages (ASP.NET), and so on),
+    generated content in Hyper Text Markup Language (HTML), and a database type or types they support (various Server Query
+    Languages (SQLs), Oracle, IBM DB2, or even flat files and Microsoft Access databases).
+
+    Available as a single image or install medium, all functions reside within the same operating system and memory space.
+    The platform and database combinations selected for this model are often more a question of developer competencies and preferences than anything else.
+    Social engineering and open source information gathering on the responsible teams will certainly assist in characterizing the architecture of the web application.
+
+
+Three-tier(nivel) models
+
+    Conceptually, the three-tier design is still used as a reference model, even if most applications have migrated to other topologies or have yet to evolve from a standalone implementation.
+    While many applications now stray from this classic model, we still find it useful for understanding the basic facilities needed for real-world applications.
+    We call it a three-tier model but it also assumes a fourth unnamed component: the client.
+
+The three tiers include the web tier (or front end), the application tier, and the database tier, as seen here: in the following figure:(Three-tier models)
+
+
+The Three Tier Architecture provides greater scalability and specialization that modern enterprise applications require.
+
+The role of each tier is important to consider:
+
+Web or Presentation Tier/Server/Front End:
+    This module provides the User Interface (UI), authentication and authorization, scaling
+    provisions to accommodate the large number of users, high availability features (to handle load shifting, content caching,
+    and fault tolerance), and any software service that must be provisioned for the client or is used to communicate with the client.
+        HTML, eXtensible Markup Language (XML),
+        Asynchronous JavaScript And XML (AJAX),
+        Common Style Sheets (CSS), JavaScript, Flash, other presented content, and UI components all reside in this tier,
+    which is commonly hosted by Apache, IBM WebSphere, or Microsoft IIS. In effect, this tier is what the users see through their browser and interact with to request and receive their desired outcomes.
+
+Application or Business Tier/Server:
+    This is the engine of the web application.
+    Requests fielded by the web tier are acted upon here, and this is where business logic, processes, or algorithms reside.
+
+    This tier also acts as a bridge module to multiple databases or even other applications, either within the same organization or with trusted third parties.
+    C/C++, Java, Ruby, and PHP are usually the languages used to do the heavy lifting and turn raw data from the database tier into the information that the web tier presents to the client.
+
+
+The Database Tier/Server:
+    Massive amounts of data of all forms is stored in specialized systems called databases.
+    These troves(tesoros) of information are arranged so they can be quickly accessed but continually scaled.
+
+    Classic SQL implementations such as MySQL and ProstgreSQL, Redis, CouchDB, Oracle, and others are common for storing the data, along with a large variety of abstraction tools helping to organize and access that data.
+    At the higher end of data collection and processing,
+    there are a growing number of superscalar database architectures that involve
+        Not Only SQL (NoSQL),
+        which is coupled with database abstraction software such as Hadoop.
+    These are commonly found in anything that claims to be Big Data or Data Analytics, such as Facebook, Google, NASA, and so on.
+
+
+The Client:
+    All of the three tiers need an audience, and the client (more specifically, their browser) is where users access the application and interact.
+    The browser and its plugin software modules support the web tier in presenting the information as intended by the application developers.
+
+
+
+Model-View-Controller design
+
+    The Model-View-Controller (MVC)
+    design is a functional model that guides the separation of information and exposure, and to some degree, also addresses
+    the privileges of the stakeholder users through role separation.
+    This allows the application to keep users and their inputs from intermingling with the back-end business processes, logic, and transactions that can expose earlier architectures to data leakage.
+    The MVC design approach was actually created by thick-application software developers and is not a logical separation of services and components but rather a role-based separation.
+    Now that web applications commonly have to scale while tracking and enforcing roles, web application developers have adapted it to their use.
+    MVC designs also facilitate code reuse and parallel module development.
+
+An MVC design can be seen in following figure:
+    The Model-View-Controller design focuses on roles, not functions, and is often combined with a functional architecture.
+
+In the MVC design, the four components are as follows:
+
+Model:
+    The model maintains and updates data objects as the source of truth for the application, possessing the rules, logic, and patterns that make the application valuable.
+
+    It has no knowledge of the user, but rather receives calls from the controller to process commands against its own data objects and returns its results to both the controller and the view.
+    Another way to look at it is that the Model determines the behavior of the application.
+
+
+View:
+    The view is responsible for presenting the information to the user, and so, it is responsible for the content delivery and
+    responses: taking feedback from the controller and results from the model.
+    It frames the interface that the user views and interacts with.
+    The view is where the user sees the application work.
+
+
+Controller:
+    The controller acts as the central link between the view and model; in receiving input from the view's user interface,
+
+    the Controller translates these input calls to requests that the model acts on.
+
+    These requests can update the Model and act on the user's intent or update the View presented to the user.
+
+    The controller is what makes the application interactive, allowing the outside world to stimulate the model and alter the view.
+
+User:
+    As in the other earlier models, the user is an inferred component of the design; and indeed, the entire design will
+    revolve around how to allow the application to deliver value to the customer.
+
+
+
+Notice that in the MVC model, there is very little detail given about software modules, and this is intentional.
+
+By focusing on the roles and separation of duties, software (and now, web) developers were free to create their own platform and architecture while using MVC as a guide for role-based segmentation.
+
+Contrast this with the standalone or 3-tier models break down the operation of an application, and we'll see that they are thinking about the same thing in very different ways.
+
+    One thing MVC does instill is a sense of statefulness, meaning that the application needs to track session information for continuity.
+
+This continuity drove the need for HTTP cookies and tokens to track sessions, which are in themselves something our app developers should now find ways to secure.
+
+Heavy use(uso pesado) of application programming interfaces (APIs) also mean that there is now a larger attack surface.
+
+If the application is only presenting a small portion of data stored within the database tier, or that information should be more selectively populated to avoid leaks by maintaining too much
+information within the model that can be accessed when misconfigured or breached.
+In these cases,
+    MVC is often shunned as a methodology because it can be difficult to manage data exposure within it.
+
+It should be noted that the MVC design approach can be combined with physical or logical models of functions;
+    in fact, platforms that use some MVC design principles power the majority of today's web applications.

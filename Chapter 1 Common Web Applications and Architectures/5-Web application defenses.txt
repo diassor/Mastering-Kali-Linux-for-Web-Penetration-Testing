@@ -1,0 +1,94 @@
+Web application defenses
+
+If we step back and think about what customers are up against, it is truly staggering. (es realmente asombroso)
+
+Building a secure web application and network are akin (parecido) to building a nuclear reactor plant.
+
+No detail is small and insignificant, so one tiny failure
+(a crack, weak weld, or a small contamination),
+despite (a pesar de) all of the good inherent in the design and implementation, can mean failure.
+
+A similar truth impacts web application security – just one flaw, be it a misconfiguration or omission in the myriad of components, can provide attackers with enough of a gap through which immense damage can be inflicted.
+
+Add to this the extra problem that these same proactive defensive measures are relied upon in many environments to help detect these rare events (sometimes called black swan events (eventos cisne negro)).
+
+Network and application administrators have a tough job, and our purpose is to help them and their organization do it a job better.
+
+
+Standard defensive elements
+    So, what elements of the system fit in here? The following figure shows the most common elements involved in a web application's path, relative to a 3-tier design:
+
+    Most serious web applications will include defenses to stymie our efforts, but all security elements are only as good as their latest patch, configuration, and the operators monitoring them.
+
+The key external elements in a typical web application's defense are:
+
+Firewall (FW):
+    The first element focused on security is usually a perimeter or the internet Edge firewall that is responsible for enforcing a wide variety of access controls and policies to
+    reduce the overall attack surface of the enterprise, web applications included.
+    Recent advances in the firewall market have seen the firewall become a
+    Next Generation Firewall (NGFW)
+    where these policies are no longer defined by strict source and destination port and IP Address pairs, but in contextual fashion, incorporating more human-readable elements such as
+    the users or groups in the conversation, the geographic location, reputation, or category of the external participant, and the application or purpose of the conversation.
+
+Load balancer:
+    Many scaled designs rely on load balancers to provide the seamless(sin costura) assignment of workloads to a bank of web servers.
+
+    While this is done to enable an application to reach more users, this function often corresponds with some proxy-like functions that can obscure the actual web tier resources from the prying eyes of the hacker.
+
+    Some load balancer solutions also include security-focused services in addition to their virtual IP or reverse proxy functions.
+
+    Functionally, they may include the web application firewall functions.
+
+    Load balancers can also be important in helping to provide Distributed Denial of Service (DDoS) protection spreading, diverting, or absorbing malicious traffic loads.
+
+
+Web Application Firewall (WAF):
+    WAFs provide application-layer inspection and prevention of attacks to ensure that many of the exploits that we will attempt in this book are either impossible or difficult to carry out.
+    These firewalls differ from the network firewall at the perimeter in that they are only inspecting the HTTP/HTTPS flows for attacks.
+    WAFs tend to be very signature-dependent and must be combined with other defense solutions to provide coverage of other vectors.
+
+
+
+Additional layers
+
+Not shown in the preceding diagram are additional defensive measures (medidas) that may run as features on the firewalls or independently at one or more stages of the environment.
+
+Various vendors market these solutions in a wide variety of market categories and capability sets.
+While the branding may vary, they fall into a couple of major categories:
+
+
+Intrusion Detection/Prevention Systems (IDS/IPS):
+    These key elements provide deep packet inspection capabilities to enterprises to detect both atomic and pattern-based (anomaly) threats.
+    In a classic implementation, these offer little value to web applications given that they lack the insight into the various manipulations of the seemingly valid payloads that hackers will use to initiate common web application attacks.
+
+    Next-Generation IPS (NGIPS) may offer more protection from certain threats, in that they not only process classic IDS/IPS algorithms, but combine context and rolling baselines to identify abnormal transactions or interactions.
+
+    These tools may also be integrated within the network firewall or between tiers of the environment.
+
+    Newer NGIPS technologies may have the ability to detect common web vulnerabilities, and these tools have shown tremendous value in protecting target systems that use unpatched or otherwise misconfigured software modules.
+
+Network Behavioral(comportamiento) Analysis (NBA):
+    These tools leverage metadata from network elements to see trends and identify abnormal behavior.
+
+    Information gleaned(concedida) from Syslogs, and flow feeds (Neflow/IPFIX, sFlow, jFlow, NSEL, and so on)
+    won't provide the same deep packet information that an IPS can glean, but the trends and patterns gleaned from the many
+    streams through a network can tip operators off to an illicit escalation of credentials.
+    In web applications, more egregious privilege attacks maybe identified by NBA tools, along with file and directory scraping attacks.
+
+
+All of the components mentioned can be implemented in a multitude of form factors:
+from various physical appliance types to virtual machines to cloud offerings.
+
+More sophisticated web applications will often employ multiple layers differentially to provide greater resilience against attacks, as well as to provide overarching functions for a geographically disperse arrangement of hosting sites.
+
+A company may have 10 locations,
+    for example, that are globally load-balanced to serve customers.
+    In this situation, cloud-based load balancers, WAFs, and firewalls may provide the first tier of defense, while each data center may have additional layers serving not only local
+    web application protection but also other critical services specific to that site.
+
+
+Note
+
+    The combinations are limitless, but keep in mind that, as the complexity of the security solutions deployed ratchets up, so does the likelihood (probabilidad) that they are misconfigured.
+    Our recon efforts and subsequent planning of our penetration tests will need to account for these variables.
+    

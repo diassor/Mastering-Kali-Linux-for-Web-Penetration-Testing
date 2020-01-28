@@ -1,0 +1,61 @@
+Common weaknesses – where to start
+
+Web application penetration testing focuses on a thorough evaluation of the application, its software framework, and platform.
+
+Web penetration testing has evolved into a dedicated discipline apart from network, wireless, or client-side (malware) tests.
+
+It is easy for us to see why recent trends indicate that almost 75% of reported cyber attacks are focused on the web applications.
+
+If you look at it from the hacker's perspective, this makes sense:
+
+    Portals and workflows are very customized, and insulating them against all vectors during development is no small feat (no es poca cosa).
+
+    Web applications must be exposed to the outside world to enable the users to actually use them.
+        Too much security is seen as a burden and a potential deterrent (disuasorio) to conducting business.
+
+    Firewalls and intrusion systems, highly effective against network-based attacks, are not necessarily involved in the delivery of a web portal.
+
+    These applications present potentially proprietary or sensitive data to externally situated users.
+        It is their job, so exploiting this trust can expose a massive amount of high-value information.
+
+    Web app attacks can often expose an entire database without a file-based breach, making attribution and forensics more difficult.
+
+
+The bulk(mayormente) of this chapter was meant to introduce you to the architectural aspects of your targets.
+
+A deep understanding of your customers' applications will allow you to focus efforts on the tests that make the most sense.
+
+Let's look again at a typical 3-tier application architecture (shown in following figure), and see what potential issues there may be that we should look into:
+
+Harmful web application attacks focus on all aspects of the application's architecture - and so shall we.
+
+These potential vectors are some of the major threats we will test against; and in some cases, we will encompass a family of similar attack types.
+They are shown in relation to their typical place in the 3-tier design where the attack typically takes effect, but the attackers
+themselves are normally positioned in a public web tier much like the legitimate client.
+The attack categories that we'll discuss as we proceed are grouped as follows:
+
+
+Authentication, authorization, and session management attacks:
+    These attacks (and our tests) focus on the rigor with which the application itself verifies the identity and enforces the privilege of a particular user.
+    These tests will focus on convincing the Web Tier that we belong in the conversation.
+
+Cross-Site Scripting (XSS) attacks:
+    XSS attacks involve manipulating either the client or the web and/or application tiers into diverting a valid session's
+    traffic or attention to a hostile location, which can allow the attacker to exploit valid clients through scripts.
+        Hijacking attempts often fit in this category as well.
+
+Injections and overflows:
+    Various attacks find places throughout the 3-tier design to force applications to work outside tested boundaries by
+    injecting code that maybe allowed by the underlying modules but should be prohibited by the application's implementation.
+
+    Most of these injections (SQL, HTML, XML, and so on)
+    can force the application to divulge information that should not be allowed, or they can help the attacker find administrative privileges to initiate a straightforward (sencillo) dump by themselves.
+
+Man-in-the-Middle (MITM) attacks:
+    Session hijacking is a means by which the hacker or tester intercepts a session without the knowledge of either side.
+
+    After doing so, the hacker has the ability to manipulate or fuzz (forma de testeo aleatorio) requests and responses to manipulate one or both sides and uncover more data than what the legitimate user was actually after or entitled to have.
+
+Application tier attacks:
+    Some applications are not configured to validate inputs properly, be it in validating how operations are entered or how file access is granted.(concedido)
+    It is also common to see applications fall short in enforcing true role-based controls; and privilege escalation attacks often occur, giving hackers the run of the house.

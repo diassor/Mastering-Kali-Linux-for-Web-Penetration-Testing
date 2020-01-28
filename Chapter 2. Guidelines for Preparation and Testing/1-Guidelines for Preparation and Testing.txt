@@ -1,0 +1,20 @@
+Guidelines for Preparation and Testing
+
+These plans can exist as either a part of the customer's process or as something that we bring through a contract – we maybe i
+nternal employees and contractors or brought in as outside consultants.
+
+In the first case, you maybe tasked with testing against your own employer's environment or products.
+
+In this case, your orders will likely flow from internal processes or project requirements.
+
+Ad hoc testing ordered by management isn't uncommon, but be sure that the scope and processes are formally agreed upon to ensure all parties are protected.
+
+In the latter case, you or your employer may be hired by a customer to provide testing.
+
+In these cases, the scope, Statement of Work (SOW), and contract, as a whole, will need to be vetted by both parties to ensure that boundaries are preserved.
+
+Throughout the entire process,(a lo largo del proceso )  keep in mind why we are there – we're there to help the customers, not to humiliate or show up their staff.
+
+Whether your involvement in testing is by invite or mandate, the ethical hacking community should commend organizations that submit
+to testing, as it maybe our personal data or financial status someday that is at stake.
+Let's do what we can to make sure we're not tomorrow's victims.

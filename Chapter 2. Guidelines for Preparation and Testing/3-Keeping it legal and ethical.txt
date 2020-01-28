@@ -1,0 +1,36 @@
+Keeping it legal and ethical
+
+Wouldn't it be great if our testing processes kept us out of jail and reduced the risk for us and our customers?
+
+There is an exponentially growing body of laws at the national, provincial, state, and local levels in most countries.
+
+The many news stories we are all bombarded with make it clear that government bodies at all levels throughout the world are still
+trying to determine how to find the right balance of privacy, confidentiality, and accountability for cyber-security related events.
+
+It turns out that, in the vast majority of government bodies, those making the laws might be ill-suited to understand the complexities and form effective regulations.
+
+One Complication for us is the fact that we are very rarely operating in a single jurisdiction: interstate and international entanglements are perilous(peligroso) and dynamic.
+
+How can we save ourselves from constant paralysis and fear in doing our job?
+
+
+What is legal?
+    First, the locations of the sites and the legal jurisdiction governing the businesses that we are testing will each present distinct laws and regulations that we should be aware of.
+    In the United States and European Union, actions that cross state or member borders fall under the primary jurisdiction of their overarching regulations. To avoid running afoul of these laws, you maybe well served to search on your governing body's laws (for the EU, http://eur-lex.europa.eu/homepage.html) that offer a good starting place, while the US Department of Justice offers similar search capabilities but summarizes national code in the guide called Prosecuting Computer
+
+        Crimeshttps://www.justice.gov/sites/default/files/criminal-ccips/legacy/2015/01/14/ccmanual.pdf).
+
+    US laws, which are similar to the Computer Fraud and Abuse Act of 1984, the Economic Espionage Act of 1996, the Federal Information Security Management Act (FISMA), Cyber Security Enhancement Act of 2002, and Uniting and Strengthening America by Providing Appropriate Tools Required to Intercept and Obstruct Terrorism (USA PATRIOT, from 2001), also impact the legal precedent and principles of American cyber laws. Regulations such as Sarbanes-Oxley, the Health Insurance Portability and Accountability Act (HIPAA), and the Payment Card Industry Digital Security Standard (PCI-DSS) maybe applied to many of the customers that we'll be interacting with, depending on their function and governing agencies.
+
+    The EU just enacted a new far-reaching regulation called the General Data Protection Regulation (GDPR, http://www.eugdpr.org)
+    that helps define the responsibilities of companies, and it will certainly impact our roles for projects involving companies doing business in the EU.
+
+    The Indian Government recently instituted its own comprehensive National Cyber Security Strategy of 2013 and provides access to all of them through their Ministry of Electronics and Information Technology site (http://meity.gov.in/content/cyber-laws-security).
+
+    As your practice grows, it maybe worth having a lawyer or firm, concentrating on laws around cyber security, data, privacy, and ethical hacking, on a retainer to help craft you legally sound contracts and provide representation in the event of any legal action with which you and your company maybe involved.
+
+
+What is ethical?
+    While not legally binding, ethical guidelines can be a bellwether for where laws and regulations are heading and, at the very least, a higher bar than most government entities. What they lack in legal language, they than make up for in plain terms that typically steer us away from any legally questionable areas that may arise. The EC-Council and GIAC/SANS both publish a Code of Ethics (https://www.eccouncil.org/code-of-ethics/ and https://www.giac.org/about/ethics), as do many other industry institutions and certifying authorities.
+
+    In the natural evolution of a pen testing practice, it is likely that issues will be encountered as projects are discussed or completed, which maybe ambiguous within the established standard operating procedures, code of ethics, or law. In these cases, it is best to step back and assess the potential short- and long-term harm or benefits that may arise with each of the options available. Having agreed to a set of legal and ethical boundaries can be an asset here - sometimes the best approach is to avoid ethical or legal gray areas altogether and stick with processes and actions that are firmly justified.

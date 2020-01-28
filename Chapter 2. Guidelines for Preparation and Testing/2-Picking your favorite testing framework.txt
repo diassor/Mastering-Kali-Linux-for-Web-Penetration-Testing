@@ -1,0 +1,230 @@
+Picking your favorite testing framework
+    (Elegir tu marco de prueba favorito)
+
+
+framework. This testing framework's contents and format will vary greatly, so we'll need to sort through the options and see which one makes sense.
+
+Government supported centers and institutes such as the
+    United States Computer Emergency Readiness Teams (US CERT), Computer Security Resource Center (CSRC)
+    at the National Institute of Standards and Technology (NIST),  European Union Agency for Network and Information Security (https://www.enisa.europa.eu )
+tend to be focused on guidelines for defenders, that offer some guidance that can certainly be turned into test requirements and focus areas.
+
+So, back to the potential paths; picking a framework often comes down to one's comfort zone and familiarity with the program or perspective.
+
+For many industries, compliance and regulations will also drive the choice.
+
+There is no right answer, but the selection can have an impact on the architecture and result in strengths and weaknesses in the end result.
+
+Many a times our own training budgets, schedules, product set, and backgrounds will dictate how we arrive at our process.
+
+
+
+Frameworks through a product
+
+Kali Linux itself has some tool suites that it can host to provide a comprehensive coverage of the testing lifecycle. Here is a list of some of the more prevalent options:
+
+IronWASP (http://ironwasp.org/index.html):
+    This free and open source package runs on Mac and Windows or WINE on Linux, and it comes with a ton of great out-of-the-box capabilities.
+    What makes it really powerful, however, is that you can craft(arte) your own or borrow someone else's modules written in VB.NET, C#, Ruby, or Python to make the tool your own!
+    Its website provides well-scripted detailed videos to show you what the tool can do.
+
+Veracode (http://www.veracode.com/products/dynamic-analysis-dast/web-application-security-testing):
+    A new entry into the arena is the SaaS offering Veracode to perform cloud-hosted web application penetration testing.
+
+IBM Security AppScan
+    (http://www-03.ibm.com/software/products/en/appscan):
+
+    This all-in-one web and mobile application test suite can be turned loose on target applications to automatically report back on compliance, vulnerabilities, and suggested fixes.
+
+    It is a popular on-premise option for larger enterprises and has offerings for all phases of the
+        Software Development Life Cycle (SDLC).
+    More recently, they have begun to offer cloud-hosted variants.
+
+    IBM's solution also sets itself apart from the rest, thanks greatly to its integration with similar security and development ecosystems.
+
+    They offer differentiation thanks to synergies between their
+        System Event and Incident Manager (SEIM), QRadar,
+    and their portfolio of web-focused IDS/IPS products and code development platforms.
+
+Rapid7 appspider
+    (https://www.rapid7.com/products/appspider/):
+
+    Where IBM focuses on its own ecosystem, Rapid7 has a similar suite of capabilities but focuses on integration with technology partners.
+
+    Appspider is capable of many of the same things but is geared toward integration with DevOps tools and a comprehensive list of SEIM, IDS/IPS, and WAF tools.
+
+    It can even automate patching, replay attacks, and can automatically generate rules; it is a top-end performer with respect to speed, coverage, and usability.
+
+HP WebInspect
+    (http://www8.hp.com/us/en/software-solutions/webinspect-dynamic-analysis-dast/):
+
+    Much like IBM's offerings, WebInspect is quite focused on a single-vendor approach for all things such as security, development, and coding, and then penetration testing and remediation.
+
+    The costs and complexity of this solution make it a better option for in-house analysis rather than for outside pen testers.
+
+ Acunetix (http://www.acunetix.com):
+    Unlike the IBM, Rapid7, and HP WebInspect options, the Acunetix web vulnerability scanner concentrates on pen testing
+    support and reporting, and does not delve into automating rules and patching.
+
+    This is not a bad thing; what it does, it does well; Often, these features are unused when an external pen tester is at work.
+    Acunetix offers rich reporting and frequently finishes the head of the class in efficacy, coverage, and features.
+
+
+
+Train like you play
+
+Certifications are a great means by which you can climb up the learning curve and launch your web pen testing career.
+
+Chances are if you are reading this book, you have one or more of these specialized certifications already under your belt.
+
+Most certification blueprints walk the ethical hacker through the flow of a test, which closely mimics the Lockheed Martin Cyber Kill Chain ® (http://www.lockheedmartin.com/us/what-we-do/aerospace-defense/cyber/cyber-kill-chain.html shown in the following figure).
+    pdf  Methodology to Network Defense in this  folder
+
+While these are not frameworks in name, they can provide a soup to nuts methodology that can be integrated and adapted for use in your own process. (image Train like you play)
+
+The Cyber Kill Chain drives most of the attack and test methodologies, and forms the basis for most of the industry certifications.
+
+    Note
+
+        Lockheed Martin is credited with having created the Cyber Kill Chain in a paper called
+        Intelligence-Driven Computer Network Defense Informed by Analysis of Adversary Campaigns and Intrusion Kill Chains (http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf).
+
+
+The EC-Council approach
+
+    The EC-Council's Hacking and Hardening Corporate Web App/Web Site CAST 613 course (https://www.eccouncil.org/programs/web-application-security/) tackles a selection of the most impactful and feared attacks.
+
+    Their course touches on the highlights and is focused on assisting developers in understanding how to better secure and test their applications.
+
+    Given that the EC-Council does not have an offensive certification focused on purely web app pen testing, this
+    course and certification can augment a more general pen testing methodology as learned in the EC Council's
+    Certified Ethical Hacker (CEH) certification.
+
+    As with many EC-Council certifications, materials are available either through their training courses or through third-party texts available at bookstores and online.
+
+We'll refer to some more of the ethical guidelines from the EC-Council, but given that this is not as popular a path as their CEH, look at more established standards for web pen testing in particular.
+
+
+The GIAC/SANS approach
+
+    GIAC and SANS together offer events, training paths, and a robust community that is often considered a favorite for US
+    and NATO government cyber security professionals, and it is often listed in requirements for the many roles there.
+
+    Among their offerings is the
+        GIAC Web Application Penetration Tester (GWAPT) certification.
+    GWAPT is a standalone certification that closely mirrors the Cyber Kill Chain, and their curriculum is available only at conferences and through online courses.
+
+    The high cost of their training is considered well worth it, but it often limits the breadth of audience that can access their methodology and framework.
+    Consider the GWAPT a more advanced certification, well-worth pursuing as a next-step in your web pen testing career.
+
+
+The Offensive Security approach
+    Offensive Security is the organization that brings us Kali Linux, as well as some active blogs and thought leadership in the area of penetration testing and forensics.
+
+    While they are most known in the certification realm for their
+    Offensive Security Certified Profession (OSCP),
+    they also offer the Offensive Security Web Expert (OSWE, https://www.offensive-security.com/information-security-certifications/oswe-offensive-security-web-expert/) .
+
+    This rigorous training features a 24-hour practical exam that is the hallmark(contraste) of their certification strategy.
+
+    While Offensive Security is focused on practical aspects, they do, in fact, teach a hands-on methodology that many use as their baseline.
+    Their operating system, Kali Linux, is the focus, so we'll certainly heed(atencion) their guidance in many areas in this book.
+
+Open source methodologies and frameworks
+    Open source advocates(defensores) provide us with some very thorough options that we can select for our starting point.
+
+    Each option offers a structure that is typically free or biased(parcial) toward a specific vendor or toolset.
+
+    In fact, most of the open source frameworks developed by not-for-profit organizations can only be implemented with a cross-section of tools for full coverage. (cobertura)
+
+    Additional guidance from organizations such as the
+        World Wide Web Consortium (W3C, https://www.w3.org ) and the Web Applications Security Council (WASC, http://www.webappsec.org )
+    can assist in rounding out your processes.
+
+
+ISECOM's OSSTMM
+    The Institute for Security and Open Methodologies (ISECOM) publishes a paywall-protected version of their most recent
+
+    Open Source Security Testing Methodology Manual
+    (OSSTMM, http://www.isecom.org/research/osstmm.html);
+    and version 4 is the latest one.
+    A silver or higher-status member can access the document, but earlier versions are accessible for free.
+
+    The OSSTMM works at a higher level to describe the processes for all forms of penetration testing, with web application testing elements sprinkled throughout. (elementos esparcidos por todo)
+
+    We'll refer to it occasionally as we proceed, but consider this an optional reference for this book.
+
+
+ISSAF
+    The Information Systems Security Assessment Framework (ISSAF, https://sourceforge.net/projects/isstf/) is, for all intents and purposes, a mothballed project that nevertheless provides great information.
+    It can help understand an entire enterprise-grade assessment process, which not only includes pen testing, but also covers incident and change control programs,
+    Security Operations (SecOps) procedures, and the physical security of the environment, for instance.
+
+    What the ISSAF lacks more current application testing guidance, it makes up for this in providing sample NDAs, contracts, questionnaires, and other useful templates that can help craft the appropriate deliverables.
+
+Of note to us is that the ISSAF covers these discipline areas, among others:
+
+    Project management, guidelines, and best practices throughout the assessment
+    The assessment methodology
+    Technical control assessment
+    Unix /Linux, Windows, Novell, and database system security assessments
+    Web application security assessments
+    Internet user security and social engineering
+    The legal aspects of security assessment projects
+    Templates for Non-Disclosure Agreement (NDA) and security assessment contracts
+    A Request for Proposal (RFP) template
+    Some guidelines for penetration testing lab design (covered later in this chapter)
+
+
+
+NIST publications
+    NIST has, for almost three decades, released special publications to provide best practices and guidance in many technology areas, and the
+        Computer Security Resource Center (CSRC)
+    has led the way in providing many freely accessible publications in the area of cyber security defense.
+
+    NIST has also released valuable guides for testing the efficacy and coverage of an organization's security approach.
+
+    NIST's first foray into this area, their special publication, Technical Guide to Information Security Testing and Assessment (NIST 800-115 (http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-115.pdf),
+    is somewhat dated and now is no longer maintained manually.
+
+    It is worth the time to reference SP 800-115, as it still provides useful information for all forms of penetration testing, web applications included.
+    Technical currency aside, its value lies in its methodical treatment of testing data, maintaining proper controls, and building your testing toward a valuable report.
+
+    The more recent SP of interest is Assessing Security and Privacy Controls in Federal Information Systems and Organizations (SP 800-53A, available at http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53Ar4.pdf).
+
+    This presentation is less focused on the administrative process and more so on providing guidelines around how to best craft your own policies.
+
+    SP 800-53A also offers guidance on incorporating their rightful place within the SDLC (as mentioned in Chapter 1, Common Web Applications and Architectures).
+
+    As an added bonus, SP 800-53A includes several appendices that offer some assessment and reporting information; Appendix F includes a complete suite of tests that can be incorporated into your own process.
+
+    NIST test scenarios are ranked by coverage and criticality, offering some much-needed rigor to an otherwise massive cache of publically known vulnerabilities.
+
+
+OWASP's OTG
+
+    The most widely accepted reference in web pen testing is the OWASP Testing Guide also known as OTG, Version 4 (https://www.owasp.org/index.php/OWASP_Testing_Project).
+
+    The OWASP has led the field for many years due to heavy participation from the community and its stellar reputation for anticipating trends and teaching the community to test against them.
+
+    OWASP's influence is a major driver in presentations at conferences such as those run by SANS, Black Hat, and DevCon, and their top 10 web security threats are a must-read for any of us.
+
+    The OTG, much like the NIST guidance, provides some tips and pointers for incorporating testing in appropriate phases.
+
+    OWASP maintains the OTG more regularly that the other full-coverage frameworks discussed previously, with new releases of both the top 10 and the OTG every three to four years.
+
+    The bulk(la mayor parte) of the OTG, however, dives right into the web-specific testing that can provide full coverage of not only the top 10 threats but a whole host of vulnerabilities that are actively tracked by the OWASP team.
+
+    While the OTG covers a lot of ground, it begins with a primer including OWASP's best practices in the SDLC and the proper phases for tests.
+
+    The OTS also goes beyond technical vulnerabilities to show how target customers may benefit from red teaming (conducting mock security intrusions) and the many recons and footprinting aspects particular to web pen testing.
+
+    Once this foundation is discussed, the following sections break the web app pen testing down into logical groups focused on a specific area of the architecture that can be covered by similar tests, tools, and in similar phases of development or deployment:
+
+        Identity management, authentication, and authorization
+        Session management
+        Input validation
+        Error handling
+        Cryptography
+        Business logic (the processing and manipulation of data based on inputs or updates)
+        Client-side (typically victim browsers)

@@ -1,0 +1,9 @@
+Summary
+
+Web application penetration testing can be a big undertaking(empresa).
+
+Failing to plan is planning to fail; it is essential that we have a well-defined process or testing framework in place that is both well understood by our technical team, as well as sanctioned by the customer's management for use in their environment. Pen testing inevitably forces us to understand some non-technical aspects of the job too. When we are targeting applications we do not own, across infrastructures that are provided by third parties, we will most certainly have to abide by the various rules and ethical norms of those many stakeholders. There are a lot of different angles to achieving this understanding, so at the very least this should be a deliberate and a well-thought out process.
+
+In this chapter, we took a look at some of the more prevalent testing methodologies and frameworks that we can draw from to establish our own process and practice. We also spent some time looking at how to scope our legal and ethical responsibilities. Unlike the black hat hackers out there, we are here to help insulate our customers against attacks, so we have rules to follow. All of the homework in defining our process and understanding our boundaries is tested against the sandbox we put together, and we covered some aspects of establishing a sandbox or lab of your own. Your own environment may look very different: different strokes for different folks!
+
+In our next chapter, we will finally start to delve into how we can recon and scope our targets. We will look at the tools available to make non-intrusive scans and stay off our target site's radar, as we plunge into how they are structured, reveal potential vectors for access, and catalog adjacencies and notes of interest that can help us in later phases of the test. Let's get to it!

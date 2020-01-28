@@ -1,0 +1,68 @@
+Application development cycles
+
+Application developers adhere (adherirse) to processes that help maintain progress according to schedule and budget.
+
+Each company developing applications will undoubtedly (indudablemete) have its own process in place,
+but common elements of these processes will be various phases:
+    from inception to delivery/operation as well as any required reviews,
+    deliverable expectations, testing processes, and resource requirements.
+
+A common development process used in web applications is the application or Software Development Life Cycle (SDLC) shown in following figure, captured from https://commons.wikimedia.org/wiki/File:SDLC_-_Software_Development_Life_Cycle.jpg:
+
+Every modern application developer follows the SDLC or something similar.
+
+No matter what phases are defined in a company's development process, it is important to incorporate testing, penetration testing included, in each to mitigate risk at the most cost-effective stage of the process possible.
+
+I've seen government development programs quickly exceed their budget due to inadequate consideration for security and security testing in the earlier phases of the cycle.
+
+In these projects, project management often delayed any testing for security purposes until after the product was leaving the
+implementation phase, believing that the testing phase was so-named as to encompass all verification activities.
+
+Catching bugs, defects, or security gaps in this phase required significant rework, redesign, or work-arounds that drastically impacted the schedule and budget.
+
+
+Coordinating with development teams
+    The costs to mitigate threats and impact overall schedules are the most fundamental reasons for testing early and is often a part of the development cycle.
+
+    If you are a tester working within a multi-disciplinary team, early and coordinated penetration tests can eliminate flaws and address security concerns long before they are concrete and costly to address.
+    Penetration testing requirements should be part of any verification and a validation test plan.
+
+    Additionally, development teams should include application security experts throughout the requirement and design phases to ensure that the application is designed with security in
+    mind, a perspective that a web application penetration tester is well-suited (muy adecuado) to provide.
+
+    There are references from organizations such as the
+        Open Web Application Security Project
+            (OWASP, https://www.owasp.org/index.php/Testing_Guide_Introduction),
+            SANS (https://www.sans.org), and the
+            US Computer Emergency Response Team (https://www.us-cert.gov/bsi/articles/best-practices/security-testing/adapting-penetration-testing-software-development-purposes)
+    that can be used to help guide the adaptation of penetration testing processes to the company's own development cycle.
+
+    The value of this early and often strategy should be easy to articulate to the management, but concrete recommendations for
+    the countering of specific web application vulnerabilities and security risks can be found in security reports such as those prepared by
+    WhiteHat Security, Inc. found here (https://info.whitehatsec.com/rs/675-YBI-674/images/WH-2016-Stats-Report-FINAL.pdf)
+    and from major companies such as Verizon, Cisco, Dell, McAfee, and Symantec. It is essential to have corporate sponsorship throughout the development to ensure that cyber security is adequately and continuously considered.
+
+
+Post deployment - continued vigilance
+
+    Testing is not something that should be completed once to check the box and never revisited.
+    Web applications are complex; they reuse significant repositories of code contributed by a vast array of organizations and projects.
+
+    Vulnerabilities in recent years have certainly picked up, with 2014 and 2015 being very active years for attacking common open source libraries in use.
+    Attacks such as
+        Heartbleed, SSLPoodle, and Shellshock
+    all take advantage of these open source libraries that, in some cases power, over 80% of the current web applications today.
+
+    It can take years for admins to upgrade servers, and with the increasing volume of cataloged weaknesses it can be hard to follow.
+    2016, for instance, was the year of Adobe Flash, Microsoft internet Explorer, and Silverlight vulnerabilties.
+
+    It is impossible for the community at large to police each and every use case for these fundamental building blocks, and a web application's owners may not be aware of the inclusion of these modules in the first place.
+
+    Applications for one battery of tests should continue to be analyzed at periodic intervals to ascertain their risk exposure with time.
+    It is also important to ensure that different test methodologies, if not different teams,
+    are used as often as possible to ensure that all angles are considered.
+
+    This testing helps complete the SDLC by providing the needed security feedback in the testing and evolution phases to
+    ensure that, just as new features are incorporated, the application is also developed to stay one step ahead of potential attackers.
+    It is highly recommended that you advise your customers to fund or support this testing and employ both internal and a selection of external testing teams so that these findings
+    make their way into the patch and revision schedule just as functional enhancements do.
