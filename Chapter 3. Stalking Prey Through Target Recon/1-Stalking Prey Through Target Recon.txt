@@ -1,0 +1,25 @@
+Chapter 3. Stalking Prey Through Target Recon
+    Presa de acecho a través del reconocimiento de objetivos
+
+
+
+The American President Abraham Lincoln, quotable as he may have been, is often (incorrectly) held to have once said,
+
+        "Give me six hours to chop down a tree and I will spend the first four sharpening the axe."
+
+Note
+
+In this book, we'll be following along with the Pen Test Kill Chain discussed in Penetration Testing with the Raspberry Pi – Second Edition (by Jason Beltrame and Mike McPhee, available at https://www.packtpub.com/networking-and-servers/penetration-testing-raspberry-pi-second-edition) shown in the following figure:
+
+
+The universal vulnerability of all systems is the user, and web applications present their developers with an outlet to express themselves and show what they are made of. Effective social engineering can often short-circuit a tremendous amount of technical engineering to obtain credentials and other key elements of the web application's architecture. We'll look at how to exploit trust and pride to encourage the target's users and developers to squeeze as much out of this approach as possible.
+
+Let's not forget that artifacts themselves can help the customer understand their information exposure. Keenly aware cyber security initiatives will not only draw attention to what is publicly available with respect to their organizations, but they may even engage in misinformation. In your discovery, catalog your findings: customers should be commended for reducing their public exposure.
+
+In this chapter, we'll discuss the following:
+
+    Gathering and using offline archives of websites
+    Reconnaisance of your target using public resources and a fancy old browser
+    Using social engineering to hack the users
+    Automating open source information gathering to map and characterize the target
+    Identifying key aspects of our target and focusing later efforts through active scanning

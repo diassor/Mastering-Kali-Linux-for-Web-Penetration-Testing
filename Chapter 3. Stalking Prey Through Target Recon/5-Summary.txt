@@ -1,0 +1,36 @@
+Summary
+
+
+As I mentioned in the beginning of this chapter,
+the recon phase can make or break the subsequent phases.
+
+The information gathering will feed your cracking and fuzzing operations, narrowing search fields to something significantly more manageable.
+
+The work saved in focusing the testing translates into tighter test criteria, more successful testing approaches, less churn and trial and error, and much more salient reports.
+
+Customers often learn as much about what we find in this phase as they will in the remaining phases, and this brings up a crucial point.
+
+The quality and quantity of information available online about their systems and the people using them can have dramatic consequences in the future.
+
+Proactive actions to limit or reduce this exposure improves their security posture and should be both encouraged and coached.
+
+In this chapter, we explored some deeper uses of the most popular OSINT gathering tools.
+
+We saw how we can quickly map the various network and domain components in a web application's hosting architecture, and even began to scan that infrastructure with tighter command line
+options that yield more succinct and useful data than the defaults.
+
+We also delved(profundizado) into better uses of search engines and leveraged some popular online resources that have documented some truly scary query strings.
+
+Social engineering in many forms were discussed, and we built our own MITM attack to capture credentials based on our mirrored website.
+
+Wrapping up, we looked at how Maltego begins to unravel the target environment's layers and aid in visualizing our adversary.
+
+In the next chapter, you'll learn how to crawl web applications more effectively for quick scans using the Arachni framework.
+
+As an intercepting proxy to interact with the conversation between the server and client, we'll see how Arachni can go further to
+automate some attacks to provide additional test vectors, launch
+scans, trace flows on DOM, and JavaScript environments.
+
+As a bonus, you'll learn to use Arachni to mimic mobile platforms and even produce higher quality reports, either as stand-alone or
+as the basis for a multi-tool pen test deliverable.
+    The work in this chapter is about to pay off, folks!

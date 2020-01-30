@@ -1,0 +1,54 @@
+Being social with your target
+
+
+If you are not using Social-Engineer Toolkit
+(SET, https://www.trustedsec.com/social-engineer-toolkit/),
+you are missing out on something important.
+
+We can certainly use it to spoof(parodia de ) Google, Facebook, and Twitter to attract victims and launch attacks or scrape their credentials,
+but we can also use it in spoofing our target web application so as to hijack sessions and map user behaviors.
+
+As victims unknowingly browse these duplicate websites from the comfort of a coffee shop chair, attackers can gather the victims' passwords or even inject a command shell that gives them full access to the victims' systems.
+
+It is a great tool for security professionals to demonstrate how users more often than not will not pay attention to the location
+where they enter sensitive information as long as the page looks legit. (legitimo)
+
+Let's take a look at how to use SET against the mirror that we pulled down from www.hackthissite.org.
+
+Here is a diagram we can use to help envision what this attack looks like:
+        check Social-Engineer Toolkit.png
+
+    SET can be used for many attacks, but who doesn't like a classic MITM?
+
+
+
+My typical use for SET is to select option
+    1) Social Engineering Attacks,
+    then select 2) Website Attack Vectors.
+    What I'm looking for is in
+    3) Credential Harvester Attack Method,
+
+so we can grab our poor target users' login credentials.
+
+We can use the built-in templates or import custom sites
+(useful for corporate portals or lesser-used web applications);
+
+but why wouldn't we want to just use the mirror we already captured?
+We'll choose option
+    3) Custom Import.
+
+This will turn our Kali Linux VM into a malicious front-end for www.hackthissite.org, presenting itself as the real deal and scraping credentials or any other HTML-based information fields:
+
+    check setoolkit.png
+
+SET configuration using a previous mirror - modify and tweak to make it even more convincing.
+
+A quick check of our mirror shows it is now up-and-running; our task now is to persuade users to direct their initial sessions to here.
+
+A quick check pointing to my copy of the site shows our MITM clone is ready to roll.
+
+Entering some credentials in the Login fields and submitting them, I can see that they are captured live and recorded in a log file.
+
+    check login-mirror MITM.png 
+
+Any HTTP messages that arrive are captured, so credentials or personal information is ours to own.

@@ -1,0 +1,198 @@
+The imitation game
+
+If one challenge in the recon phase of the attack gets your blood pumping, it'll be trying to find out every last detail about a site without getting caught looking too curious.
+
+Casual, normal users crawl websites randomly with a focus on certain high-traffic transactions, and anything more methodical than this may arouse suspicion.(puede despertar sospechas)
+
+Inefficient workflows may also raise flags, so being able to surf the site and game plan attacks is an incredibly useful trick to learn.
+
+In this section, we'll look at how to create a mirror of a site (without waking the defenders) for a risk-free simulation. They do say that imitation is the best form of flattery.
+
+We'll also find that there are limitations to the site's mirror.
+
+Back-end data, higher-level scripting, and intelligence all fail to replicate without the same infrastructures at the application and data tiers.
+
+The business logic that we may be counting on to actually exploit the application doesn't replicate over, and the vast array(amplia gama) of data that is our end goal cannot be pulled in this fashion.
+
+We'll need to better understand how to surf safely.
+
+We'll discuss some better poking(hurgando) and prodding(pinchando) techniques for the actual site with stealth(sigilo) in this section as well.
+
+
+
+Making (then smashing) a mirror with HTTrack
+
+    Military operations, sports teams, and business proposal teams operating at their best will rehearse or perfect their tactics and overall strategy against a mock opponent or in an environment that is an authentic copy of what they will be up against.
+
+    The benefits of this are many, but chief among them is that these rehearsal environments provide a safe environment to build confidence and competence without the risk of losing the actual battle, game, or project.
+
+    The point is that the more accurate and realistic the simulation, the greater the chance of success when the real deal is happening.
+
+    think about our role as pen testers.
+    If you can pull down a copy of the HTML, JavaScript, CGI, and CSS code for a full website and a hierarchy intact, then
+    wouldn't that be a great way to explore the site without tripping alarms at the real target?
+
+    All of the brainstorming you and your team engage in can now be used on a replica, and because there is no target organization monitoring the dashboard,
+
+    we can test a bunch of vectors rather than fretting over just one.
+
+    In training along with the pen test, this is also a useful method of creating local, travel-ready copies of sites that can be used without fear of retribution or dependence on actual network connectivity.
+
+    These archives can also form the basis of a spoof attack, allowing us to take the actual web pages and modify them before hosting them in a rogue honeypot using Browser Exploitation Framework (BeEF) or a credential skimmer using Social Engineering Toolkit (SET).
+
+
+    Several site mirroring utilities such as
+        wget and w3af can do archives,
+    but HTTrack is the most fully-featured tool in Kali that can create a mirror.
+
+    You may already use it for base archives, but with a few tweaks, it can do so much more.
+
+    Let's take a look at some of the most useful CLI options for recon and their equivalent Graphical User Interface (GUI) versions wherever applicable.
+
+
+Making a stealthy initial archive
+        (Hacer un archivo inicial sigiloso)
+
+    As a refresher, you can create an archive of a website by doing the following:
+
+    httrack "http://www.hackthissite.org/" -O "/tmp/www.hackthissite.org" "+*.hackthissite.org/*"
+
+
+The –O points to the output location (some locally accessible drive where you plan to access the mirror from).
+
+While help may prove useful ( hattrack --help or man help), you'll get more out of the manual volunteered by Fred Cohen on the HTTrack website (https://www.httrack.com/html/fcguide.html).
+
+As Mr. Cohen reveals, there are a ton of switches in the CLI, and understanding the defaults for many of those is useful in crafting your own go-to mirror operation.
+
+More sophisticated sites will take measures to prevent mirroring from utilities such as HTTrack, including recursive links and directory structures, domain splitting, and obfuscating links using scripts to impair your ability to mirror them.
+
+Drastic measures such as IP blacklisting or throttling may also be employed, so it is best to only employ these tools with care, tuning, and respect for the website's owners.
+
+
+
+Tuning stealthier archives
+
+    Conducting a stealthier mirror is certainly worth learning about, but we have some trade-offs to consider.
+
+    Throttling(Estrangulamiento) and thread limits help keep us off their radar, but that means a mirror operation will take that much longer.
+
+    We can limit what we are looking for through filters and directory restrictions, which is something that social engineering and our own experience can assist with.
+
+    Are there efficiencies to be gained elsewhere?
+        ¿Hay eficiencias que se pueden obtener en otros lugares?
+
+
+    There is considerable overhead as HTTrack processes queries, and a big factor in the time and compute power consumed is the parsing of
+        Multipurpose Internet Mail Extensions (MIME) types on sites.
+    There are many customizable features of HTTrack that can be leveraged through modification to the .httrackrc file, but the most useful one I picked up was the addition of the following line, which drastically cut my mirror time from hours to minutes.
+
+    This line speeds up transfers by telling HTTrack to assume that HTML, PHP, CGI, DAT, and MPG files correspond to a standard MIME type and can be resolved to their usual end-state, avoiding all of the churn.
+
+    Simply add this in its entirety (after modifying it to your liking) to the .httrackrc file using your favorite editor and save the file:
+
+        set assume asp=text/html,php3=text/html,cgi=image/gif,dat=application/x-zip,mpg=application/x-mp3
+
+    Once I've made this modification to my defaults, the stealthier(más sigiloso) command string that
+    I find useful will do a bunch of non-default things.
+
+    Keep in mind, once you've honed your own switches, you can save them in the .httrackrc file as well.
+        Here is the command I used:
+
+        httrack www.hackthissite.org -O /tmp/hackthissite –c4 -%c10 –A20000000 –m50000000 –m1000000' –M100000000 –r25 –H2 –www.hackthissite.org/forums/* -www.hackthissite.org/user/*
+
+    Here is a brief description of the options I used.
+        N denotes a variable:
+
+        -cN: This limits the number of simultaneous downloads or
+             file handles to avoid overwhelming our target
+
+        -AN: This throttles(aceleradores) the bandwidth to stay
+             under the radar
+
+        -mN and –mN': These limit total downloads for the non-
+             HTML and HTML file sizes respectively to ensure we do not overrun our disk
+
+        -M: This sets the overall mirror size limit – again
+            keeping the disk size manageable
+
+        -rN: This puts a safety on recursion depth so we don't
+             get into a loop
+
+        -H2: This stops the download if slow traffic is detected
+
+        -<path>/*: This skips a path (in this case, I didn't want
+                   to pull down their extensive forums or user profiles)
+
+
+    You can also use the GUI version, WebHTTrack, which is handy for learning how to tweak your favorite filters and options:
+
+        WebHTTrack offers an intuitive way to master filters and tunings, and also enables the saving scan settings for repeat use.
+
+
+    This command against the https://www.hackthissite.org/ website took a little over an hour to pull down 200 MB of information.
+
+    I omitted the forums and users in this example, but I could just as easily have omitted other directories to focus on a specific area of the site or to avoid violating the boundaries established by my customer.
+
+    If you press Enter while the command line is running, you'll get a rundown of how long it has run, the number of links found, and the total download size to that point in time:
+
+
+    When the archive is complete, you can surf it as if it was the live web by visiting the local path in your browser: file:///tmp/hackthissite/www.hackthissite.org/index.html.
+
+    You'll see in the following screenshot that we've successfully captured the dynamic advertising banner content (http://infosecaddicts.com/), which may be worth filtering as well:
+
+    Use the local mirror created by HTTrack to interact with and surf the website, which is critical in identifying potential vectors.
+
+
+Is the mirror complete and up-to-date?
+
+    There is a plethora(abundancia de algo) of switches out there that I would encourage you to explore,
+    but one in particular that I find useful helps to mirror even those places on the site that the developer tells Google, Yahoo, and other crawlers to omit.
+    robots.txt files or meta tags are used to tell browsers to skip archival or search scans.
+    They usually do this to avoid allowing something to be searchable, which is certainly of interest in a pen test.
+
+    Appending the –s0 option ensures we won't miss anything in our scans.
+
+    Updating our mirror is a pretty simple process.
+
+    Assuming you are storing it in a non-volatile location (/tmp goes away on reboots), you can manually gather or even assign a cron job to automatically update your mirror's content and links.
+
+    A prompt will ensure that you mean to update the cache; and assuming this is the case, it will remove the lock file and perform an update.
+
+    I would recommend exploring archival switches that can allow you to keep older files or perform incremental updates to make better use of your time.
+
+    Some older copies may hold content that was removed to cover an inadvertent disclosure, so it is well worth hoarding some historical files until they have been scanned.
+
+
+    Note
+
+        Before we leave the HTTrack discussion,
+        it is worth mentioning that tailoring your options and settings while practicing on known sites can make your
+        mirroring process more efficient and useful.
+        Be sure to take notes and document your favorite alternatives!
+
+    HTTrack provides intelligent updates, and this saves bandwidth and time.
+        CLI options for multiple copies and versions if needed.
+
+
+Touring the target environment
+        (Recorriendo el entorno objetivo)
+
+    Local copies allow us to scope out the site in a safe manner, but where do we start?
+    Manual hands-on scanning will help us understand the flow and give us some hints as to the next steps.
+
+    I would first recommend getting a feel for the site's hierarchy and where various dynamic content portals may reside.
+
+    Where can users log into the applications hosted there, query for information, or provide or view feedback?
+
+    We should also be making note of entity information that we can use later to enumerate names, e-mail addresses, and organization information, and better understand inter-entity relationships.
+
+    If we are repurposing this mirror for MITM or honeypot duties, we'll want to be able to replicate not only the look and feel, but also the workflow.
+
+    Several tools exist that can assist with these walk-throughs, such as those that reveal the underlying HTML and JavaScript elements.
+
+    Viewing the page source through the Developer Tools in Firefox, using a plugin from the OWASP Mantra add-on bundle, HackBar, or another HTML viewer.
+
+    To save time, I would recommend that anything more than initial familiarization with the application or website be done with the use of a full proxy toolset such as Burp or Firebug.
+
+    Using a web application testing suite (covered in the next couple of chapters) helps you to efficiently pivot from the Recon stage to activities in the weaponize, exploit, or install stages.
+    

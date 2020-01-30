@@ -1,0 +1,442 @@
+Open source awesomeness
+        Genialidad de código abierto
+
+
+
+The first thing I do before accepting a task or job is to figure out what I am up against. It wasn't always this way.
+
+As a young engineer working on communications systems, I was once asked to lead the development of a specification for a subsystem that sounded cool.
+
+Woo hoo – a time to shine! I committed based on the sales pitch that the team lead provided.
+
+Reality hit me sometime around the second week in the task, as it was only then that I could look up from my keyboard to envision the remaining(restante) path ahead of me.
+
+Had I done that research ahead of my commitment, I could have avoided the trouble(problema) that was ahead(adelante) of me.
+
+Needless to say, the job got done, but I always look back and wonder how much better it could have been and how much happier and
+better rested I would have been had I researched the process, constraints, and expectations before accepting the task.
+
+Penetration testing is no different.
+
+While some testers (and black hats, for that matter) may accept a job before researching the target, the most experienced professionals take a different approach and do their homework.
+
+We're all Google search experts, but there are ways we can all improve these queries and leverage additional tools to complete the picture of what our target looks like.
+
+We need to take advantage of the many links between search engines, social media, forums and boards, and other public domain information.
+
+The following figure shows us how raw
+    Open Source Intelligence (OSINT) comes from many sources,
+and it can be accessed through search engines and Kali's own toolsets alike.
+
+An efficient use of OSINT helps to better understand the ask of a project and can help us develop the strategies, uncover
+vulnerabilities, harvest user information, and gain details that can help us map out the infrastructure.
+
+We'll take a look at a couple of tools that are likely familiar, but we will see if we can unlock some more of their potential.
+    Browsers and Kali's toolsets can help access the massive amount of OSINT available.
+        look up imagen OSINT.png
+
+
+
+Open source Intel with Google and the Google hacking database
+
+    Search engines are now so integral to our hyper-connected global society that it is easy to overlook each engine's strengths and capabilities.
+    Google, Bing, and to a lesser degree, Yahoo have dominated the market in the United States, but given that our role as a pen
+    tester may cross borders, it is useful to work with engines and their localizations to ensure we are getting the most up-to-date information.
+
+    The Search Engine Colossus (https://www.searchenginecolossus.com)
+    provides the leading options in each of the countries, including those that are embargoed.
+
+    General information searches, especially those in non-technical realms, should include search engines local to the target or their partner organizations.
+
+    Google's search engine, however, provides excellent coverage and extensive syntax all its own that can take those general engine findings and use them with great efficacy to unearth
+    architectural details, sensitive files, and potential ways into our target's servers.
+
+
+
+Tuning your Google search skills
+    There are books written specifically on advancing Google search skills, but for web penetration testing,
+    we can focus on some tips and practices that can better leverage the engine and eliminate useless(inutil) search hits, commonly referred to as noise. We can use some operators to
+    filter or focus our results, while others will perform logical combinations or modify the engine's behavior.
+
+    Let's take a look at the most effective modifiers and options, filtering or focusing first, followed by logical operators:
+
+    =>  The site: operator: Using the site:
+        operator tells Google's engine to only accept files hosted on a particular domain.
+        When we're looking for legitimate contact information, exposed files, and content, we'll want to use this
+        operator to allow us to focus purely on that domain's results, rather than on a full dump of links in page-hit order that may spam many other sites.
+
+        Take, for instance, a search on Cisco ASA documentation, both before (left) the site: operator and after (right):
+            check imagen The site: operator:
+                The Site:
+                    Operator is a great first filter to ensure results focused on your target.
+
+
+    =>  The credentials operators:
+        Using keywords such as username, password, userid, pwd, passcode, credentials, or any other variant can help us
+        locate password or username recovery details.
+
+        A quick targeted search on these terms can not only point you to portal entries you will likely target, but may, in fact, provide the keys to unlock them.
+
+        We'll discuss using default credentials against the results of these queries later in this book:
+            site:<target site> username|userid|password|passcode|pwd
+
+            (site:hackthissite.org username|userid|password|passcode|pwd)
+                check image The credentials operators.png
+
+            Credential search may not yield credentials itself, but may point to the next best thing – recovery!
+
+
+    =>  The inurl: operator:
+        An early recon of a target, including lessons learned from social engineering, may provide us with clues as to the platform used, developers involved, or points of interest in a web application.
+        We can combine the inurl: operator with the site: operator to probe those specific points of interest:
+            site:<target site> inurl:index
+                site:hackthissite.org inurl:info
+                    check The inurl: operator.png
+
+                Inurl: can help eliminate thousands of potential locations and focus.
+
+
+    =>  The file handle (ext:) operator:
+        Using standard file handles allows us to call out and include (or exclude) file extensions of interest.
+
+        Using typical file extensions, you can invoke each of them using the ext: operator.
+        For instance, we'd search for all PHP files in www.hackthissite.org with the word index in the URL using the following string:
+
+            site:<target site> ext:php inurl:index
+                site:hackthissite.org ext:php inurl:index
+
+    =>  The filetype: operator:
+        If we're looking for a file type that may not be displayed but linked to or archived on a site, we'd
+        instead use the filetype: operator.
+        Invoking filetype:xls in your search, for instance, would scour your search area for Excel spreadsheets:
+
+            site:<target site> filetype:xls inurl:finance
+                site:hackthissite.org filetype:xls inurl:finance
+
+    =>  The intitle: operator:
+        When we want a specific file, we can use the intitle: operator.
+        This is very useful to locate platform-specific configuration files, or it can help to expose the robots.txt file.
+        As you may recall from our HTTrack use, the utility's default behavior is to avoid spidering the sections of the website identified in the robots.txt file.
+
+        This was envisioned to allow web developers to prevent certain necessary but sensitive locations from being searchable by reputable browsers.
+
+        If other precautions aren't followed, robots.txt can provide a hacker with a list of files and folders they may want to see.
+        Well, for hackers, there is a good chance that there are some juicy details in there that would be very helpful.
+
+        To see what is in the robots.txt files, you can simply enter this:
+            site:<target site> intitle:"index.of" robots.txt
+                site:hackthissite.org intitle:"index.of" robots.txt
+
+
+Each of the preceding operators can help narrow searches alone or in combination, but learning more about the processing engine of Google's search can also help us eliminate extraneous information and understand the results.
+Here are some quick tip highlights:
+
+    =>  Using the logical operator OR is helpful
+        (AND is assumed).
+        If written out, OR must always be all caps to be considered the logical OR, lest it is considered part of the search phrase itself.
+        You can also use the | operator, commonly referred to as the pipe operator.
+
+    =>  Google search will focus on the first 10 non-trivial
+        words of a search phrase.
+        Using * in the place of optional or throw-away words in a
+        search phrase won't count against the ten-word limit but effectively extends the phrase for more complex searches.
+
+    =>  You can use - before an operator or filter to exclude
+        (negate) the effect of that filter or operation.
+        An example might be where we want to determine what, other than web servers, a particular domain may be presenting:
+
+        site:packtpub.com –site:www.packtpub.com
+
+
+Using the "-" modifier excludes a filter from the result set.
+
+    =>  This is not the same as the keyword NOT,
+        which is actually only useful to exclude a word from the search but has no effect on the special operators.
+
+        If we were to run the following, it would yield plenty of www results, unlike the search with - used as a modifier:
+
+            site:packtpub.com NOT site:www.packtpub.com
+
+        Using the NOT only excludes that string – not useful if you don't anticipate it.
+
+
+Work smarter with the Google hacking DB and Netcraft
+
+    Google search skills will always be useful, but a lot of the most useful strings for hackers are captured in the Google hacking database (also known as The Exploit DB),
+    a project hosted by the Offensive Security folks (https://www.exploit-db.com/google-hacking-database/).
+
+    While it is fun to browse, the best use of it is to seed your search queries, combining the strings they have catalogued with your own modifiers from the previous section.
+
+    The bulk(la mayor parte) of their categories are useful for web penetration testing,
+    but I would start with the Web Server Detection queries:
+        check Web Server Detection.png
+
+
+    These queries and others from categories such as
+        vulnerable servers, sensitive directories, and so on,
+    coupled with the inurl: and site:
+    modifiers can prove quite useful in getting a high-level look at the exposure in an environment.
+
+    If you get lucky and uneart(desenterrar) credentials or vulnerabilities, this information should be disclosed immediately to your sponsoring customer.
+
+    These searches are in use continuously on both sides of the hacking landscape(paisaje), and this sort of information should not wait until the debrief.(interrogar)
+
+
+Netcraft,
+    a company based in Bath, England, offers many services, but their free web scan tool (https://searchdns.netcraft.com) is a great quick-and-dirty scanner that can help focus more detailed efforts.
+
+    You can search on a domain name and burrow down into a report of all of the technologies and versions that can be publicly analyzed based on responses to harmless queries.
+    A quick search of https://www.packtpub.com/ on their site reveals that they have two mail IP addresses currently hosting a Packt platform on FreeBSD.
+        What else does the report tell us?
+
+    Netcraft's online web scanner gives us a great peek(ojeada) at what we have in store for future phases.
+
+    We can see that there are two trackers in place
+    (Google and Amazon).
+    XML and SSL are in use server-side while JavaScript is in use on the clients,
+    Drupal is used both as the
+        Content Management System (CMS)
+    and PHP scripting engine, and HTML5 and CSS sheets are in also use.
+    All of these are useful in refining our pen testing approaches.
+            check Netcraft.png
+
+
+Mastering your own domain
+
+    Search engines are easy and accessible, but we also need to understand what a network's domain structure,
+    addressing plan, and supporting services are, as that perspective is vital to our efforts in probing(sondeo) the application.
+
+    Domains hosting applications can have intricate domain structures that can be exploited.
+
+    The hosts, network IP addresses and blocks, nameservers, and related elements can help identify target entities, pivots to
+    adjacent hosts, underlying services and daemons, and open ports and protocols that are in use as well.
+
+    We'll look at some tools that incorporate some of these into a larger solution, but mastering
+        dig, fierce, dnsenum, dnsmap, WHOIS, and DNSRecon
+    will go a long way toward improving accuracy(exactitud) and efficacy.
+
+    The WHOIS database has been in use since the early days of the Internet,
+    and while the intricate service provider and hosting paradigms mean WHOIS rarely contains the end user of the domain and their contact information,
+    it is this information that can start an investigation.
+    We've all used it in our experience, so we'll hop(salto) into the next-level tools.
+
+
+    Digging up the dirt:
+
+        DNS records provide human-relatable aliases for IP addresses associated with the various functions of a domain.
+        I would encourage a good review of DNS operations and the associated record types at periodic intervals to ensure
+        you are always up to speed on any new trends in DNS use and to jog your memory.
+        It is not uncommon to find new applications and protocols borrowing DNS record space for their own use.
+        Keeping DNS knowledge fresh ensures you are well prepared to leverage those new applications.
+
+        The utility     dig     has been a stalwart of the pen testing community for DNS enumeration;
+        chances are you've used it and have some favorite switches you like to employ.
+
+        When it comes to web pen testing,
+        we'll be concentrating on the answer field, and with the various switches that dig offers,
+        we can use it to map out other related record types as well.
+
+    Digging record types(Excavación de tipos de registros)
+
+        Dig can be used to query for and map out the associated record types for;
+            A, MX, NS, SOA, or other records quickly and easily.
+
+        The default is A records, which indicate the domain's main IPv4 addresses, but you may only want to locate the associated name servers (NS records), for instance, to attempt MITM attacks.
+        MX records and pointers to the mail servers on a domain can be useful in crafting phishing campaigns to target users.
+        If we want to see all of the record types associated with a domain, we could use the ANY keyword:
+
+            example:   dig packtpub.com ANY
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+root@edwin:~# dig packtpub.com ANY
+
+; <<>> DiG 9.11.5-P4-5.1+b1-Debian <<>> packtpub.com ANY
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 48503
+;; flags: qr rd ra ad; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;packtpub.com.			IN	ANY
+
+;; ANSWER SECTION:
+packtpub.com.		3789	IN	HINFO	"RFC8482" ""
+packtpub.com.		3789	IN	RRSIG	HINFO 13 2 3789 20200131021637 20200129001637 34505 packtpub.com. vLlYehQx19uG6rmyWTXgWsN8YWe7mE1ShsgVRT074gycl94ynKsIZFHP EaN3/m83b+xPRC0MtOOechBUo1/otg==
+
+;; Query time: 62 msec
+;; SERVER:
+;; WHEN: Wed Jan 29 20:16:04 EST 2020
+;; MSG SIZE  rcvd: 170
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Basic dig output - useful, but could be more succinct.
+    Salida de excavación básica: útil, pero podría ser más sucinta.
+
+    In order to find the mail servers associated with Packt Publishing, we would merely enter the MX keyword to filter just those record types.
+
+    Each of the subsections in the basic dig output can be filtered, either by naming the specific section, such as
+        +nocomments, +noquestion, +noauthority, +noadditional, or +nostats for instance.
+    To turn all of these sections off, you can use the
+        +noall shortcut
+    and then turn on your desired section (for example +answer) to the end, as follows:
+
+        dig packtpub.com ANY +noall +answer
+
+    The dig output shortened to focus only on records of interest to us
+
+    The     +short  modifier can eliminate a lot of superfluous information as well and is well worth appending to your standard queries to help shorten outputs.
+
+
+    dig =   also offers the ability to do a zone transfer, which, if the target is not protected against it,
+    allows an attacker to pull down the entire forwarding zone of a domain.
+
+    Something that is only supposed to happen between legitimate nameservers on the domain, a successful zone transfer is a windfall(ganacia inesperada) to the attacker and is something we should always test and look for.
+
+    To demonstrate a zone transfer, we'll use the wonderful training site Diji Ninja's own domain (https://digi.ninja/projects/zonetransferme.php) and type this:
+
+        dig axfr @nsztm1.digi.ninja zonetransfer.me
+            check dig-diji-ninja.png
+
+    Conducting a zone transfer is quite a coup, when it works.
+
+        dig offers a clean and easy toolset, but often, the target environment is larger than what dig can present on well, or we are looking for more in-depth results.
+
+        This is where dnsrecon comes in.
+
+        I would recommend repeating the same sorts of exercises with dnsrecon to see how it compares with dig and help you determine which tool is to be your primary effort.
+
+
+    Getting fierce:
+
+        dig and dnsrecon are fantastic tools, but wouldn't it be nice if we could go a little further and have a tool that
+        tries to connect to the site's address blocks, automates the zone transfer, and does it all while logging?
+
+        Fierce (written in Perl by Robert RSnake Hansen)
+        can do just that.
+
+        There are many options and modifiers that can be used when invoking Fierce, but in most cases,
+
+        I do initial discovery using dig, move to Fierce for an attempted zone transfer and some connection probing, and then move into a more graphical and organized tool such
+        as Maltego to build my network maps and enumerate relationships.
+
+        To use Fierce to attempt a zone transfer and send the logs to a file, you can simply invoke the tool and it will do so automatically:
+
+            fierce -dns zonetransfer.me -file /root/Desktop/packtpub.txt
+
+        Because this site allows zone transfers,
+        I'll see the results in the running output and the txt file I designated:
+            check fierce.png
+
+            Fierce automates what it takes several dig or dnsrecon queries to do.
+
+    Fierce also allows you to attempt to connect to open ports on any public IPs using the –connect switch.
+
+    You'll need to provide wordlist so that Fierce has some potential credentials to try, and you'll want to run this on
+    a dedicated machine or overnight, as the process can be lengthy, depending on the size of the domain.
+
+    We can kick this off using the following:
+        fierce -dns <target domain> -connect <wordlist>
+
+
+
+Next steps with Nikto
+
+    Once we have a full array of DNS records and other relevant intelligence,
+    we typically shift into scanning for vulnerabilities (also known as vulns).
+
+    Nikto is my preferred scanner and I'll usually keep these results for tuning tools that scan vulnerabilities but also pivot into later phases.
+
+    Nikto exports into several file types, including HTML, XML, TXT, and CSV, and using it begins the active recon phase.
+
+
+    Note:
+
+        Because it is an active tool, its use constitutes a legally provoking act, and as such,
+        it is advised to only use it in practice against lab machines and for systems where you have explicit permission to test.
+        I don't have enough collateral for posting bail on your behalf.
+
+    To use Nikto, we'll need to identify the host or host list (the latter defined in a host file) and a location for our output logs, but there is an extensive list of menu items worth considering to tailor(a medida) our scans.
+
+    Besides the output file and logging parameters, there are actually predefined tunings that are available to run some common, best-practice test sets against the specified hosts.
+
+    These options are a great shortcut to making the best use of Nikto in your scans, and are detailed in the main page:
+
+        -TuningTuning options will control the test that Nikto will use against a target.
+        By default, if any options are specified, only those tests will be performed.
+
+        If the "x" option is used, it will reverse the logic and exclude only those tests.
+        Use the reference number or letter to specify the type, multiple may be
+        used:0 - File Upload1 - Interesting File / Seen in logs2 - Misconfiguration / Default File3 - Information Disclosure4 - Injection (XSS/Script/HTML)5 - Remote File Retrieval - Inside Web Root6 - Denial of Service7 - Remote File Retrieval - Server Wide8 - Command Execution / Remote Shell9 - SQL Injectiona - Authentication Bypassb - Software Identificationc - Remote Source Inclusionx - Reverse Tuning Options (i.e., include all except specified)
+
+
+    A default scan will run all tests,
+    but if there are restrictions as to what is permitted, these tunings can help keep the test compliant.
+
+    When you require anonymity, it may also be desired to leverage an intentional proxy (either one you have established or one of many free ones (for example those on http://proxy-list.org), or better yet, a host you've already compromised for the purpose).
+
+    To do so, you would specify the proxy server in config.txt (or an explicitly called alternative) using your favorite editor.
+        Nano is my first choice, but vim or emacs works just fine:
+
+        nano /etc/nikto/config.txt
+
+
+    Scroll down to the Proxy settings section and enter the appropriate details:
+
+        # Proxy settings -- still must be enabled by -useproxy PROXYHOST=<IP address of proxy>PROXYPORT=<usually 8080, can be anything if using something like squid>
+
+    We can then launch our scans using the configured proxy as follows:
+
+        nikto -Tuning x 6 9 -useproxy -h http://192.168.1.132
+
+        Nikto is a versatile and powerful scanner - practice in a closed environment makes a huge difference.
+
+    As with any tool, it is sometimes important to realize which switches to avoid.
+
+    For black-box testing (pen testing with a more realistic covert charter, where the tester tries to emulate an attacker and is provided with no advantageous access),
+    it is essential to avoid options that cause excessive queries and chatty scans, and most of the time the +mutate switch is not worth the trouble.
+    If you are white-box testing (known to the operators, not focused on stealth, and just exploring in the open), then it can make sense to provide greater coverage.
+
+
+Employing Maltego to organize:
+
+    Maltego is one of my favorite recon tools in that it helps visualize the many links and relationships between disparate data sources.
+    Jason Beltrame and I covered it in the Penetration Testing with Raspberry Pi – Second Edition (https://www.packtpub.com/networking-and-servers/penetration-testing-raspberry-pi-second-edition), but since then,
+
+    I have begun to use it in use cases I could not have imagined.
+    As fun as it has been to plunge into this, there are certainly some best-practices that have assisted in avoiding information overload.
+    The most recent version available in Kali's distribution, 4.0.11, includes new footprinting techniques such as
+    Company Stalker, Find Wikipedia Edits, Twitter Digger, and Monitor.
+
+    All of the transforms can be of use in web pen testing, but these new social-focused starting points stress the move by Paterva to make Maltego indispensable to all hacking communities.
+
+    I tend toward using it as a graphical documentation of information gleaned from social engineering, LinkedIn/email searches, and pinning them on domains.
+
+    The ability to pivot and transform against an entity has even helped me to uncover multiple domains across multiple hosting companies that through two or three layers of obfuscation are actually run by the same network of scammers.
+
+    Recursion through transforms can help find additional users that may have local accounts or indicate relatives or friends whose names and information could populate our dictionaries.
+
+    A quick example would be to do a Company Stalker machine against Packt Publishing's web domain:
+
+        check Maltego graph.png
+
+    This Maltego graph is zoomed out to protect the innocent, but also to show the relational nature of information it tracks.
+
+    As you can see, there are several documents found in the base machine's process
+        (orange dots) and each of those files has associated metadata,
+        such as people (green),
+        certificates (yellow),
+        and locations (red).
+
+    If we burrow down(excavar) into a person,
+    we can ask for transforms that search for all potential email addresses (blue).
+
+    I find Maltego to be very helpful when you provide it with additional seed information from other OSINT sources to help
+    focus, or nudge the model towards linking the original machine and other information.
+
+    You can add any form of identity, but additional web domains or e-mail addresses, social networking usernames, or IP blocks and interfaces can greatly improve the fidelity and usefulness of Maltego graphs.
